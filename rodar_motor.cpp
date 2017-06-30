@@ -16,16 +16,21 @@
 #include <fcntl.h>
 
 //Pinos dos perifericos
-#define MOTOR1 0
-#define MOTOR2 2
-#define MOTOR3 3
-#define MOTOR4 12
-#define MOTOR_SELECAO1 8
-#define MOTOR_SELECAO2 9
-#define RELE_MOTOR 22
+#define MOTOR1 14
+#define MOTOR2 25
+#define MOTOR3 21
+#define MOTOR4 24
+#define MOTOR_SELECAO1 22
+#define MOTOR_SELECAO2 23
+#define RELE_MOTOR 13
 
 int main(int argc, char **argv)
 {
+	// Inicializar WiringPi
+	if (wiringPiSetup() == -1) {
+		return 1;
+	}
+	
 	//Dados do motor
 	int motor[4];
 
@@ -48,8 +53,8 @@ int main(int argc, char **argv)
 			digitalWrite(RELE_MOTOR, 1);//Ligar o RELE
 			delay(100);//Esperar o RELE ligar
 			//Escolher qual motor vai girar
-			digitalWrite(MOTOR_SELECAO1, i%2);
-			digitalWrite(MOTOR_SELECAO2, i/2);
+			digitalWrite(MOTOR_SELECAO1, i/2);
+			digitalWrite(MOTOR_SELECAO2, i%2);
 
 			printf("Motor %d acionado\n", i+1);//Mostrar no terminal qual motor foi acionado
 			myStepper.step(200); // Girar o motor 1 revolucao
