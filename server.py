@@ -3,9 +3,6 @@
 import cherrypy
 from subprocess import call
 
-cherrypy.config.update({'server.socket_host': "192.168.43.243",
-						'server.socket_port': 8080,
-					   })
 
 class ReleasePopsicle(object):
 	@cherrypy.expose
@@ -32,4 +29,14 @@ class ReleasePopsicle(object):
 		
 
 if __name__ == '__main__':
+#	cherrypy.config.update({
+ #           'server.socket_host': '0.0.0.0',
+#			'server.socket_port':9000
+#		})
+	cherrypy.server.socket_host = "0.0.0.0"
+	cherrypy.server.socket_port = 80
 	cherrypy.quickstart(ReleasePopsicle())
+#    cherrypy.engine.start()
+#    cherrypy.engine.block()
+
+

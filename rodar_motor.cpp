@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 	}
 
 	Stepper myStepper(200, MOTOR1, MOTOR2, MOTOR3, MOTOR4);
-	myStepper.setSpeed(60);
+	myStepper.setSpeed(10);
 	// Pinos 3 e 4 configurados como saida
 	pinMode(MOTOR_SELECAO1, OUTPUT);
 	pinMode(MOTOR_SELECAO2, OUTPUT);
