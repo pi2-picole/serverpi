@@ -30,7 +30,8 @@ class ReleasePopsicle(object):
     @cherrypy.expose
     def alarm(self, **kwargs):
         if (cherrypy.request.method == 'POST'):
-            print("Sou REQUEST")
+            call("sudo pkill -SIGINT a.out".split())
+            call("/home/pi/pi2/PI2/Versao3/a.out".split())
         return ''
         
 
